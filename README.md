@@ -38,7 +38,7 @@ more /etc/ansible/roles/Juniper.junos/version.py
 See Docker Hub for more info:
 - https://hub.docker.com/r/juniper/pyez-ansible/
 
-If you need access to Junos devices to test, you can run vsrx or vqfx vagrant images
+If you need access to some Junos devices for lab / testing purposes, you can run vSRX or vQFX vagrant images:
 
 - vSRX image on Vagrant Cloud:
     - https://app.vagrantup.com/juniper/boxes/ffp-12.1X47-D15.4-packetmode
@@ -62,7 +62,7 @@ Credentials for the default Junos devices username and password can be stored un
 - group_vars/all.yml
 ```ini
 ---
-# Default usernae and password
+# Default username and password
 device_user: lab
 device_pass: lab123
 ```
