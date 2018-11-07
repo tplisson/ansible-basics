@@ -25,18 +25,16 @@ Using a Docker container greatly simplifies the environment setup for Python, Py
 docker run -it --rm -v $(pwd):/project juniper/pyez-ansible ash
 ```
 See Docker Hub for more info: 
-https://hub.docker.com/r/juniper/pyez-ansible/
+ - https://hub.docker.com/r/juniper/pyez-ansible/
 
 If you need access to Junos devices to test, you can run vsrx or vqfx vagrant images
 
-vSRX image on Vagrant Cloud:
-https://app.vagrantup.com/juniper/boxes/ffp-12.1X47-D15.4-packetmode
-
-vQFX image on Vagrant Cloud:
-https://app.vagrantup.com/juniper/boxes/vqfx10k-re
-
-Examples of multi VMs topologies:
-https://github.com/Juniper/vqfx10k-vagrant
+- vSRX image on Vagrant Cloud:
+    - https://app.vagrantup.com/juniper/boxes/ffp-12.1X47-D15.4-packetmode
+- vQFX image on Vagrant Cloud:
+    - https://app.vagrantup.com/juniper/boxes/vqfx10k-re
+- Examples of multi VMs topologies:
+    - https://github.com/Juniper/vqfx10k-vagrant
 
 
 
