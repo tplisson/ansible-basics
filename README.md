@@ -34,7 +34,7 @@ Check the version of the "Juniper.junos" Ansible Galaxy module
 more /etc/ansible/roles/Juniper.junos/version.py
 ```
 
-```
+
 See Docker Hub for more info:
 - https://hub.docker.com/r/juniper/pyez-ansible/
 
@@ -51,16 +51,15 @@ If you need access to Junos devices to test, you can run vsrx or vqfx vagrant im
 
 ## 1.2 Setup the Environment
 
-hosts file
+Inventory "hosts" file located in my project directory
 ```ini
 [mx]
 mx1
 mx2
-
-#[all:vars]
 ```
 
-group_vars/all.yml
+Credentials for the default Junos devices username and password can be stored under:
+- group_vars/all.yml
 ```ini
 ---
 # Default usernae and password
