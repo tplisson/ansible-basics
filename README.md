@@ -13,7 +13,7 @@
 This is a short demo on the Ansible Galaxy module for Juniper Junos
 
 More on the Ansible Galaxy module for Juniper Junos here:
- - https://junos-pyez.readthedocs.io/en/stable/
+ - https://junos-ansible-modules.readthedocs.io
  - https://www.juniper.net/documentation/en_US/junos-pyez/information-products/pathway-pages/junos-pyez-developer-guide.html
 
 
@@ -27,10 +27,11 @@ docker run -it --rm -v $(pwd):/project juniper/pyez-ansible ash
 
 Check the Ansible version
 ```
-ansible-version
+ansible --version
 ```
 Check the version of the "Juniper.junos" Ansible Galaxy module
 ```
+ansible-galaxy --version
 more /etc/ansible/roles/Juniper.junos/version.py
 ```
 
@@ -67,7 +68,7 @@ device_user: lab
 device_pass: lab123
 ```
 
-## 1.3 Writing an Ansible Playbook
+## 1.3 Ansible Playbook for "juniper_junos_facts"
 
 Ansible Playbook file called pb-facts.yml
 ```yaml
@@ -125,6 +126,63 @@ mx1                        : ok=3    changed=0    unreachable=0    failed=0
 mx2                        : ok=3    changed=0    unreachable=0    failed=0
 
 /project # 
+```
+
+
+
+## 1.4 Ansible Playbook for "juniper_junos_command"
+
+Ansible Playbook file called pb-cli.yml
+```yaml
+---
+  - name: Checking internet connectivity
+    hosts: mx
+    roles:
+     - Juniper.junos
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+    - name: Ping Google at 8.8.8.8
+      juniper_junos_ping:
+        host: "{{ inventory_hostname }}"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+        #dest: "8.8.8.8"
+        dest: "10.102.176.3"
+      register: response
+    
+    - name: Print all keys in the response.
+      debug:
+        var: response
+```
+
+## 1.5 Ansible Playbook for "juniper_junos_ping
+
+Ansible Playbook file called pb-ping.yml
+```yaml
+---
+  - name: Checking internet connectivity
+    hosts: mx
+    roles:
+     - Juniper.junos
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+    - name: Ping Google at 8.8.8.8
+      juniper_junos_ping:
+        host: "{{ inventory_hostname }}"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+        dest: "8.8.8.8"
+      register: response
+    
+    - name: Print all keys in the response.
+      debug:
+        var: response
 ```
 
 

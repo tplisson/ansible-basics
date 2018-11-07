@@ -1,0 +1,21 @@
+---
+  - name: Checking internet connectivity
+    hosts: mx
+    roles:
+     - Juniper.junos
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+    - name: CLI Command "show chassis hardware"
+      juniper_junos_command:
+        host: "{{ inventory_hostname }}"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+        
+      register: response
+    
+    - name: Print all keys in the response.
+      debug:
+        var: response
