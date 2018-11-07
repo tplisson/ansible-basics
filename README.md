@@ -22,7 +22,9 @@ More on the Ansible Galaxy module for Juniper Junos here:
 Using a Docker container greatly simplifies the environment setup for Python, PyEz and Ansible... It also keeps things clean and contained
 
 ```
-docker run -it --rm -v $(pwd):/project juniper/pyez-ansible ash
+docker pull juniper/pyez-ansible
+
+docker run -it --rm -v $(pwd):/project juniper/pyez-ansible
 ```
 
 Check the Ansible version
@@ -135,7 +137,7 @@ mx2                        : ok=3    changed=0    unreachable=0    failed=0
 Ansible Playbook file called pb-cli.yml
 ```yaml
 ---
-  - name: Checking internet connectivity
+  - name: CLI Commands
     hosts: mx
     roles:
      - Juniper.junos
@@ -144,18 +146,31 @@ Ansible Playbook file called pb-cli.yml
 
     tasks:
 
-    - name: Ping Google at 8.8.8.8
-      juniper_junos_ping:
+    - name: Pass CLI command "show chassis hardware"
+      juniper_junos_command:
         host: "{{ inventory_hostname }}"
         user: "{{ device_user }}"
         passwd: "{{ device_pass }}"
-        #dest: "8.8.8.8"
-        dest: "10.102.176.3"
-      register: response
+        commands:
+          - show chassis hardware
+      register: cli_output
     
-    - name: Print all keys in the response.
+    - name: Print CLI output
       debug:
-        var: response
+        msg: "{{ cli_output }}"
+
+    - name: Pass CLI command "show route summary"
+      juniper_junos_command:
+        host: "{{ inventory_hostname }}"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+        commands:
+          - show route summary
+      register: cli_output
+    
+    - name: Print CLI output
+      debug:
+        msg: "{{ cli_output }}"
 ```
 
 ## 1.5 Ansible Playbook for "juniper_junos_ping

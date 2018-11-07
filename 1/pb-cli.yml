@@ -1,5 +1,5 @@
 ---
-  - name: Checking internet connectivity
+  - name: CLI Commands
     hosts: mx
     roles:
      - Juniper.junos
@@ -8,14 +8,28 @@
 
     tasks:
 
-    - name: CLI Command "show chassis hardware"
+    - name: Pass CLI command "show chassis hardware"
       juniper_junos_command:
         host: "{{ inventory_hostname }}"
         user: "{{ device_user }}"
         passwd: "{{ device_pass }}"
-        
-      register: response
+        commands:
+          - show chassis hardware
+      register: cli_output
     
-    - name: Print all keys in the response.
+    - name: Print CLI output
       debug:
-        var: response
+        msg: "{{ cli_output }}"
+
+    - name: Pass CLI command "show route summary"
+      juniper_junos_command:
+        host: "{{ inventory_hostname }}"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+        commands:
+          - show route summary
+      register: cli_output
+    
+    - name: Print CLI output
+      debug:
+        msg: "{{ cli_output }}"
