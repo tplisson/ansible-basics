@@ -4,9 +4,9 @@
 
 ## Documentation Structure
 
-[**1. Quick Ansible Demo**](README.md#1.-Quick-Ansible-Demo)
+[**1. Quick Ansible Demo**](README.md#-1.-Quick-Ansible-Demo)
 
-[**2. More Advanced Stuff**](README.md#2.-More-Advanced-Stuff)
+[**2. More Advanced Stuff**](README.md#-2.-More-Advanced-Stuff)
 
 
 # 1. Quick Ansible Demo
@@ -14,7 +14,7 @@ This is a short demo on the Ansible Galaxy module for Juniper Junos
 
 More on the Ansible Galaxy module for Juniper Junos here:
  - https://junos-ansible-modules.readthedocs.io
- - https://www.juniper.net/documentation/en_US/junos-pyez/information-products/pathway-pages/junos-pyez-developer-guide.html
+ - https://www.juniper.net/documentation/en_US/junos-ansible/information-products/pathway-pages/junos-ansible.html
 
 
 ---
