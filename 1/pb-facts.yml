@@ -1,0 +1,24 @@
+---
+  - name: Gather Facts
+    hosts: mx
+    roles:
+     - Juniper.junos
+    connection: local
+    gather_facts: no
+
+    tasks:
+    - name: Checking NETCONF connectivity
+      wait_for: host={{ inventory_hostname }} port=830 timeout=5
+
+    - name: Retrieve information from devices running Junos OS
+      juniper_junos_facts:
+        host: "{{ inventory_hostname }}"
+        #user: "lab"
+        #passwd: "lab123"
+        user: "{{ device_user }}"
+        passwd: "{{ device_pass }}"
+      register: junos
+    
+    - name: Print Junos Software version
+      debug: 
+        msg="{{ junos.version }}"

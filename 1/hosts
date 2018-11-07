@@ -1,0 +1,6 @@
+[mx]
+mx1
+mx2
+
+#[all:vars]
+#ansible_connection=ssh
