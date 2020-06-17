@@ -1,7 +1,5 @@
 # Ansible Basics with Junos
 
-[![Build Status](https://travis-ci.org/tplisson/ansible-basics.svg?branch=master)](https://travis-ci.org/tplisson/ansible-basics)
-
 ## Documentation Structure
 
 [**1. Quick Ansible Demo**](README.md#-1.-Quick-Ansible-Demo)
