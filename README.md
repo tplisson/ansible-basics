@@ -34,7 +34,8 @@ ansible --version
 Check the version of the "Juniper.junos" Ansible Galaxy module
 ```
 ansible-galaxy --version
-more /etc/ansible/roles/Juniper.junos/version.py
+ansible-galaxy list
+cat /root/.ansible/roles/Juniper.junos/version.py
 ```
 
 
