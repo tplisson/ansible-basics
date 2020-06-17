@@ -24,7 +24,7 @@ Using a Docker container greatly simplifies the environment setup for Python, Py
 ```
 docker pull juniper/pyez-ansible
 
-docker run -it --rm -v $(pwd):/project juniper/pyez-ansible
+docker run -it --rm -v $(pwd):/playbooks juniper/pyez-ansible
 ```
 
 Check the Ansible version
@@ -63,7 +63,7 @@ mx2
 
 Credentials for the default Junos devices username and password can be stored under:
 - group_vars/all.yml
-```ini
+```yaml
 ---
 # Default username and password
 device_user: lab
@@ -101,9 +101,9 @@ Ansible Playbook file called pb-facts.yml
 ```
 Expected Output
 ```
-docker run -it --rm -v $(pwd):/project juniper/pyez-ansible ash
+docker run -it --rm -v $(pwd):/playbooks juniper/pyez-ansible ash
 
-/project # ansible-playbook -i hosts pb-facts.yml
+/playbooks # ansible-playbook -i hosts pb-facts.yml
 
 PLAY [Gather Facts] *************************************************************************************************************************************************
 
@@ -127,7 +127,7 @@ PLAY RECAP *********************************************************************
 mx1                        : ok=3    changed=0    unreachable=0    failed=0
 mx2                        : ok=3    changed=0    unreachable=0    failed=0
 
-/project # 
+/playbooks # 
 ```
 
 
